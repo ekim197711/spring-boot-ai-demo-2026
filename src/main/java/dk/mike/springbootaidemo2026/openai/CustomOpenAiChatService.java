@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 @Service
 @RequiredArgsConstructor
-public class OpenAiChatService {
+public class CustomOpenAiChatService {
     private final OpenAiChatModel chatModel;
 
     public ChatResponse generateAnswer(String question) {

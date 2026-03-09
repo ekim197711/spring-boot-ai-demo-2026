@@ -7,19 +7,29 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 
 @SpringBootTest
-class OpenAiChatServiceTest {
+class CustomOpenAiChatServiceTest {
     @Autowired
-    private OpenAiChatService openAiChatService;
+    private CustomOpenAiChatService customOpenAiChatService;
 
     @Test
     void generateAnswer() {
-        ChatResponse chatResponse = openAiChatService.generateAnswer("What are java developers usually good at withing sports?");
+        ChatResponse chatResponse = customOpenAiChatService
+                .generateAnswer("What are java developers usually good at withing sports?");
         System.out.println(chatResponse.getResult().getOutput().getText());
     }
 
     @Test
     void generateAnswerDotNet() {
-        ChatResponse chatResponse = openAiChatService.generateAnswer("Do a comparison between python and java developers regarding skills withing sports?");
+        ChatResponse chatResponse = customOpenAiChatService
+                .generateAnswer("Do a comparison between python and .net developers " +
+                        "regarding skills withing sports?");
+        System.out.println(chatResponse.getResult().getOutput().getText());
+    }
+
+    @Test
+    void generateAnswerArchery() {
+        ChatResponse chatResponse = customOpenAiChatService
+                .generateAnswer("Which developer is best at archery and badminton in game of combining these disciplines?");
         System.out.println(chatResponse.getResult().getOutput().getText());
     }
 }

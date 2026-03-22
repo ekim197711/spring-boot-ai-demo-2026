@@ -1,5 +1,6 @@
 package dk.mike.springbootaidemo2026.openai;
 
+import dk.mike.springbootaidemo2026.openai.prompt.CustomOpenAiChatService;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;

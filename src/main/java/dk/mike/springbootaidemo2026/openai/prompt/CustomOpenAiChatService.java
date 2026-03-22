@@ -1,4 +1,4 @@
-package dk.mike.springbootaidemo2026.openai;
+package dk.mike.springbootaidemo2026.openai.prompt;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.model.ChatResponse;
@@ -16,6 +16,13 @@ import java.nio.charset.StandardCharsets;
 @Service
 @RequiredArgsConstructor
 public class CustomOpenAiChatService {
+    private static final String PROMPT_ENGLISH = """                
+            Answer the following question based ONLY on the provided context:
+            %s
+            
+            Question: %s
+            
+            """;
     private final OpenAiChatModel chatModel;
 
     public ChatResponse generateAnswer(String question) {
@@ -34,13 +41,7 @@ public class CustomOpenAiChatService {
 
     String generatePrompt(String question) {
         String context = getDeveloperComparisonJson();
-        return """                
-                Answer the following question based ONLY on the provided context:
-                %s
-                
-                Question: %s
-                
-                """.formatted(context, question);
+        return PROMPT_ENGLISH.formatted(context, question);
     }
 
     public String getDeveloperComparisonJson() {

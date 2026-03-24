@@ -18,6 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class MikesOpenAiEmbeddingService {
     private final OpenAiEmbeddingModel embeddingModel;
+    //    private final VectorStore vectorStore
     // Pre-built map of song title → embedding vector
     private final Map<String, float[]> songEmbeddings = new LinkedHashMap<>();
 

@@ -1,0 +1,6 @@
+services:
+  redis:
+    image: redis/redis-stack-server:latest
+    container_name: spring-boot-ai-demo-redis
+    ports:
+      - "6379:6379"

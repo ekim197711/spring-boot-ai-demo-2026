@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/mikem/projects_demo/spring-boot-ai-demo-2026/**)",
+      "Bash(chmod +x /tmp/gen_aliens.sh)",
+      "Bash(bash /tmp/gen_aliens.sh)",
+      "Bash(wait)",
+      "Bash(python3:*)"
+    ]
+  }
+}

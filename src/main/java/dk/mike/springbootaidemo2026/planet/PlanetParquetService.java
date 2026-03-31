@@ -12,6 +12,7 @@ import org.apache.parquet.io.LocalInputFile;
 import org.apache.parquet.io.LocalOutputFile;
 import org.apache.parquet.schema.MessageType;
 import org.apache.parquet.schema.MessageTypeParser;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -31,6 +32,8 @@ public class PlanetParquetService {
               required boolean habitable;
             }
             """);
+    @Value("${planet.parquet.path:./myPlanets.parquet}")
+    private String storedPlanetsPath;
 
     public Path saveDummyPlanets(Path parquetPath) throws IOException {
         SimpleGroupFactory groupFactory = new SimpleGroupFactory(PLANET_SCHEMA);
@@ -75,6 +78,10 @@ public class PlanetParquetService {
         } catch (Exception exception) {
             throw new RuntimeException("Failed to read Parquet file", exception);
         }
+    }
+
+    public List<Planet> readStoredPlanets() throws IOException {
+        return readPlanets(Path.of(storedPlanetsPath));
     }
 
     private List<Planet> dummyPlanets() {

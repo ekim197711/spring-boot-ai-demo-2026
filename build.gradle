@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '4.0.3'
+    id 'org.springframework.boot' version '4.0.5'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -10,12 +10,17 @@ description = 'spring-boot-ai-demo-2026'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(26)
     }
 }
 
 repositories {
     mavenCentral()
+}
+
+configurations.configureEach {
+    exclude group: 'org.slf4j', module: 'slf4j-reload4j'
+    exclude group: 'ch.qos.reload4j', module: 'reload4j'
 }
 
 ext {
@@ -24,17 +29,22 @@ ext {
 
 dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'ch.qos.logback:logback-classic:1.5.32'
     implementation 'com.opencsv:opencsv:5.12.0'
     implementation 'org.apache.parquet:parquet-common:1.17.0'
     implementation 'org.apache.parquet:parquet-encoding:1.17.0'
     implementation 'org.apache.parquet:parquet-column:1.17.0'
     implementation 'org.apache.parquet:parquet-hadoop:1.17.0'
-    implementation 'org.apache.hadoop:hadoop-common:3.4.2'
-    implementation 'org.apache.hadoop:hadoop-mapreduce-client-core:3.4.2'
+    implementation 'org.apache.hadoop:hadoop-common:3.4.3'
+    implementation 'org.apache.hadoop:hadoop-mapreduce-client-core:3.4.3'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
     implementation 'org.springframework.ai:spring-ai-redis-store'
 }
 

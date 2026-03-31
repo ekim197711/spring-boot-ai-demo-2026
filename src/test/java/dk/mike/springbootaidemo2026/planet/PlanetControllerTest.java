@@ -19,10 +19,7 @@ public class PlanetControllerTest {
     private final PlanetParquetService planetParquetService = new PlanetParquetService();
     private final PlanetController planetController = new PlanetController(planetParquetService);
 
-    /**
-     * Test case: Successfully retrieve the list of planets.
-     * Expectation: Returns a non-empty list of planets.
-     */
+
     @Test
     public void testGetPlanetsSuccessfully() throws IOException {
         // Arrange: Create a temporary Parquet file with dummy planet data
@@ -31,29 +28,12 @@ public class PlanetControllerTest {
         System.setProperty("planet.parquet.path", tempPath.toString());
 
         // Act
-        List<PlanetParquetService.Planet> planets = planetController.getPlanets();
+        List<PlanetParquetService.Planet> availablePlanets = planetController.getPlanets();
 
         // Assert
-        assertThat(planets).isNotEmpty();
-        assertThat(planets.get(0).name()).isEqualTo("Mercury");
-        assertThat(planets.size()).isEqualTo(10);
-
-        // Clean up
-        Files.deleteIfExists(tempPath);
-    } @Test
-    public void testGetPlanetsSuccessfully() throws IOException {
-        // Arrange: Create a temporary Parquet file with dummy planet data
-        Path tempPath = Files.createTempFile("test-planets", ".parquet");
-        planetParquetService.saveDummyPlanets(tempPath);
-        System.setProperty("planet.parquet.path", tempPath.toString());
-
-        // Act
-        List<PlanetParquetService.Planet> planets = planetController.getPlanets();
-
-        // Assert
-        assertThat(planets).isNotEmpty();
-        assertThat(planets.get(0).name()).isEqualTo("Mercury");
-        assertThat(planets.size()).isEqualTo(10);
+        assertThat(availablePlanets).isNotEmpty();
+        assertThat(availablePlanets.get(0).name()).isEqualTo("Mercury");
+        assertThat(availablePlanets.size()).isEqualTo(10);
 
         // Clean up
         Files.deleteIfExists(tempPath);

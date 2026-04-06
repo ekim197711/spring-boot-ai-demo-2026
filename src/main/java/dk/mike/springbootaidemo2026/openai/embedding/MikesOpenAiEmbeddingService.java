@@ -56,7 +56,7 @@ public class MikesOpenAiEmbeddingService {
         System.out.println("Loaded " + songEmbeddings.size() + " song embeddings. "
                 + "Tokens used: " + response.getMetadata().getUsage().getTotalTokens());
     }
-
+ 
     public String recommendNextSong(String justListenedTo) {
         // Embed the song the user just listened to
         float[] queryVector = embeddingModel.embed(justListenedTo);

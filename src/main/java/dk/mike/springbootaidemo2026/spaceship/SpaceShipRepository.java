@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository interface til håndtering af {@link SpaceShipEntity} i databasen.
+ * Repository interface for handling {@link SpaceShipEntity} in the database.
  */
 @Repository
 public interface SpaceShipRepository extends JpaRepository<SpaceShipEntity, Long> {

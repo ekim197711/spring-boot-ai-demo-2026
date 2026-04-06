@@ -19,8 +19,8 @@ class PlanetParquetServiceTest {
     @Test
     void savesAndReadsDummyPlanets() throws IOException {
         PlanetParquetService service = new PlanetParquetService();
-//        Path parquetFile = tempDir.resolve("planets.parquet");
-        Path parquetFile = Path.of("./myPlanets.parquet");
+        Path parquetFile = tempDir.resolve("planets.parquet");
+        Files.deleteIfExists(parquetFile);
 
         Path savedFile = service.saveDummyPlanets(parquetFile);
         List<PlanetParquetService.Planet> planets = service.readPlanets(savedFile);

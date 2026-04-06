@@ -1,0 +1,28 @@
+{
+  "name": "spring-boot-ai-demo-2026",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/ekim197711/spring-boot-ai-demo-2026#readme",
+  "bugs": {
+    "url": "https://github.com/ekim197711/spring-boot-ai-demo-2026/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekim197711/spring-boot-ai-demo-2026.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "tofu_dev_another": "cd tofu/environment/dev-another && tofu init && tofu apply -auto-approve",
+    "tofu_dev": "cd tofu/environment/dev && tofu init && tofu apply -auto-approve",
+    "terraform_dev": "cd tofu/environment/dev && terraform init && terraform apply -auto-approve",
+    "azure_list_blobs": "az storage blob list --account-name mikesstoragedemopurpose --container-name tfstate-datafactory-demo --auth-mode login",
+    "azure_list_blobs_env_auth": "az storage blob list --account-name mikesstoragedemopurpose --container-name tfstate-datafactory-demo",
+    "azure_create_sp": "az ad sp create-for-rbac --name \"TofuServicePrincipal\" --role Contributor --scopes /subscriptions/d3bbcc96-9035-4825-a177-3b3ba19a693c",
+    "azure_login": "az login",
+    "tofu_migrate_state": "cd tofu/environment/dev && tofu init -migrate-state",
+    "tofu_upgrade_state": "cd tofu/environment/dev && tofu init -upgrade"
+  }
+}

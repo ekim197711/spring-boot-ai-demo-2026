@@ -10,9 +10,9 @@ import java.nio.file.NoSuchFileException;
 import java.util.List;
 
 /**
- * Controller that provides REST endpoints for managing and retrieving planet data.
- * Planet data is retrieved from a Parquet file using the PlanetParquetService.
- * The endpoints allow clients to view stored planet information.
+ * Controller providing REST endpoints for managing and retrieving planet data.
+ * Planet data is retrieved from a Parquet file using PlanetParquetService.
+ * Endpoints allow clients to view stored planet information.
  */
 @RestController
 @Slf4j

@@ -24,6 +24,7 @@ public class PlanetControllerTest {
     public void testGetPlanetsSuccessfully() throws IOException {
         // Arrange: Create a temporary Parquet file with dummy planet data
         Path tempPath = Files.createTempFile("test-planets", ".parquet");
+        Files.deleteIfExists(tempPath);
         planetParquetService.saveDummyPlanets(tempPath);
         System.setProperty("planet.parquet.path", tempPath.toString());
 
@@ -40,8 +41,8 @@ public class PlanetControllerTest {
     }
 
     /**
-     * Test case: Parquet file not found while retrieving planets.
-     * Expectation: Throws a ResponseStatusException with HTTP 404 status and the expected error message.
+     * Test-case: Parquet-fil ikke fundet under hentning af planeter.
+     * Forventning: Kaster en ResponseStatusException med HTTP 404-status og den forventede fejlmeddelelse.
      */
     @Test
     public void testGetPlanetsFileNotFound() {
@@ -56,8 +57,8 @@ public class PlanetControllerTest {
     }
 
     /**
-     * Test case: IOException occurs while retrieving planets.
-     * Expectation: Throws a ResponseStatusException with HTTP 500 status and the expected error message.
+     * Test-case: IOException opstår under hentning af planeter.
+     * Forventning: Kaster en ResponseStatusException med HTTP 500-status og den forventede fejlmeddelelse.
      */
     @Test
     public void testGetPlanetsIOException() throws IOException {

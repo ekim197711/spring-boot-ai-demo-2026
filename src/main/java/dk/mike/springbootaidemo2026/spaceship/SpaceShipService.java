@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Service-klasse til håndtering af rumskibe.
- * Denne service sørger for at initialisere databasen med standard rumskibe ved opstart.
+ * Service class for handling spaceships.
+ * This service ensures the database is initialized with default spaceships at startup.
  */
 @Service
 @RequiredArgsConstructor
@@ -19,8 +19,8 @@ public class SpaceShipService {
     private final SpaceShipRepository spaceShipRepository;
 
     /**
-     * Initialiserer databasen med dummy-rumskibe, hvis den er tom.
-     * Denne metode køres automatisk efter at Spring-konteksten er oprettet.
+     * Initializes the database with dummy spaceships if it is empty.
+     * This method runs automatically after the Spring context is created.
      */
     @PostConstruct
     public void init() {
@@ -36,9 +36,9 @@ public class SpaceShipService {
     }
 
     /**
-     * Henter en liste over alle tilgængelige rumskibe i databasen.
+     * Retrieves a list of all available spaceships in the database.
      *
-     * @return En liste af {@link SpaceShipEntity} objekter.
+     * @return A list of {@link SpaceShipEntity} objects.
      */
     public List<SpaceShipEntity> getAllSpaceShips() {
         return spaceShipRepository.findAll();

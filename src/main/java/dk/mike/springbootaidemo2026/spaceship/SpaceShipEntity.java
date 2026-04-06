@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Entitetsklasse der repræsenterer et rumskib i databasen.
+ * Entity class representing a spaceship in the database.
  */
 @Entity
 @Data
@@ -18,24 +18,24 @@ import lombok.NoArgsConstructor;
 public class SpaceShipEntity {
 
     /**
-     * Unik ID for rumskibet.
+     * Unique ID for the spaceship.
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
-     * Navnet på rumskibet.
+     * Name of the spaceship.
      */
     private String name;
 
     /**
-     * Antal besætningsmedlemmer.
+     * Number of crew members.
      */
     private Integer crewCount;
 
     /**
-     * Rumskibets destination.
+     * The spaceship's destination.
      */
     private String destination;
 
